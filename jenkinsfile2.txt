@@ -1,0 +1,32 @@
+pipeline {
+    agent any;
+    stages {
+        stage('BUILD') {
+		agent any;
+            steps {
+                echo "this is build stage"
+            }
+        }
+
+        stage('TEST PARALLEL') {
+		parallel {
+		stage ('test on safari'){
+            steps {
+                echo "this is test stage"
+            }
+        }
+		stage ('test on chrome'){
+            steps {
+                echo "this is test stage"
+            }
+        }
+		}
+		}
+
+        stage('deploy') {
+            steps {
+                echo "this is deploy stage"
+            }
+        }
+    }
+}
