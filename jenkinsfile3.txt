@@ -1,0 +1,40 @@
+pipeline {
+    agent {
+        label 'node1'
+    }
+    environment {
+        NAME = "Kishan"
+    }
+
+    stages {
+        stage('DEVELOP') {
+            parallel {
+                stage('BUILD') {
+
+                    steps {
+                        echo "this is build stage"
+                        sh 'make ABC.exe'
+                    }
+                }
+
+                stage('DEPLOY') {
+                    steps {
+                        echo "this is deploy stage"
+                        sh 'sleep 5'
+                    }
+                }
+
+            }
+        }
+
+        stage('TEST') {
+
+            steps {
+                echo "this is test stage"
+                echo "$NAME"
+                sh 'sleep 5'
+            }
+        }
+
+    }
+}
