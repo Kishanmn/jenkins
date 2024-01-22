@@ -13,7 +13,7 @@ pipeline {
 
                     steps {
                         echo "this is build stage"
-                        sh 'make ABC.exe'
+                        sh 'sleep 5'
                     }
                 }
 
